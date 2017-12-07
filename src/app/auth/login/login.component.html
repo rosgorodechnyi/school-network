@@ -1,0 +1,31 @@
+<div class="auth-form">
+  <mat-card>
+    <div class="auth-form__title mat-dialog-title">School Network sign in</div>
+    <div class="login-form">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field class="auth-form__field" color="accent">
+          <input matInput
+                 type="email"
+                 placeholder="Enter your email"
+                 formControlName="email">
+          <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+            {{ formErrors['email'] }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="auth-form__field" color="accent">
+          <input matInput
+                 type="password"
+                 placeholder="Enter your password"
+                 formControlName="password">
+          <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+            {{ formErrors['password'] }}
+          </mat-error>
+        </mat-form-field>
+        <div class="auth-form__button">
+          <button mat-raised-button color="accent" [disabled]="form.invalid">Sign In</button>
+        </div>
+      </form>
+    </div>
+    <div class="auth-form__bottom">If you don't have existing account, please, <a [routerLink]="['/registration']" class="simple-btn">sign up</a> !</div>
+  </mat-card>
+</div>

@@ -1,0 +1,7 @@
+<div class="message-modal" [ngClass]="data.type">
+  <div class="message-modal__title">{{ data.title }}</div>
+  <div class="message-modal__descr">{{ data.description }}</div>
+  <div class="message-modal__buttons">
+    <button mat-raised-button color="accent" (click)="close(data)">Close</button>
+  </div>
+</div>

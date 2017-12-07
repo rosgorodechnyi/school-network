@@ -1,0 +1,72 @@
+<div class="auth-form">
+  <mat-card>
+    <div class="auth-form__title mat-dialog-title">School Network sign up</div>
+    <div class="registr-form">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field class="auth-form__field" color="accent">
+          <input matInput
+                 type="text"
+                 placeholder="Enter your name"
+                 formControlName="name">
+          <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">
+            {{ formErrors['name'] }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="auth-form__field" color="accent">
+          <input matInput
+                 type="text"
+                 placeholder="Enter your surname"
+                 formControlName="surname">
+          <mat-error *ngIf="form.get('surname').invalid && form.get('surname').touched">
+            {{ formErrors['surname'] }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="auth-form__field" color="accent">
+          <input matInput
+                 type="email"
+                 placeholder="Enter your email"
+                 formControlName="email">
+          <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+            {{ formErrors['email'] }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="auth-form__field" color="accent" *ngIf="!classes">
+          <mat-select placeholder="Choose your class">
+            <mat-option></mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="auth-form__field" color="accent" *ngIf="classes">
+          <mat-select placeholder="Choose your class" formControlName="className">
+            <mat-option *ngFor="let class of classes" [value]="class._id">
+              {{ class.groupName }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('className').invalid && form.get('className').touched">
+            {{ formErrors['className'] }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="auth-form__field" color="accent">
+          <input matInput
+                 type="password"
+                 placeholder="Enter your password"
+                 formControlName="password">
+          <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+            {{ formErrors['password'] }}
+          </mat-error>
+        </mat-form-field>
+
+        <div class="auth-form__button">
+          <button mat-raised-button color="accent" [disabled]="form.invalid">Sign up</button>
+        </div>
+
+      </form>
+    </div>
+    <div class="auth-form__bottom">If you have existing account, please, <a [routerLink]="['/login']" class="simple-btn">sign in</a> !</div>
+  </mat-card>
+</div>
+
