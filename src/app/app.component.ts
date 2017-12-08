@@ -20,15 +20,25 @@ export class AppComponent implements OnInit {
 
   subs = this.authService.logedStream.subscribe(value => {
     this.isLogedIn = value;
+
+    if (this.isLogedIn) {
+      this.getUser();
+    }
   });
 
   ngOnInit() {
     this.isLogedIn = this.authService.isLogedIn();
+
+    if (this.isLogedIn) {
+      this.getUser();
+    }
   }
 
   getUser() {
-    this.usersService.getUsers().subscribe(user => {
-
+    const id = this.usersService.getUserId();
+    this.usersService.getUser(id).subscribe(user => {
+      console.log(user);
+      this.logedUser = user;
     });
   }
 

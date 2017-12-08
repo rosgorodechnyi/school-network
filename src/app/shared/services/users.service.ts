@@ -13,7 +13,7 @@ export class UsersService {
   getUserId() {
     const localData = JSON.parse(window.localStorage.getItem('snUserData'));
 
-    return localData.userId;
+    return localData[0].userId;
   }
 
   createUser(data): Observable<any> {
@@ -22,6 +22,10 @@ export class UsersService {
 
   getUsers(): Observable<any> {
     return this.http.get(`${this.apiUrl}api/user`);
+  }
+
+  getUser(id): Observable<any> {
+    return this.http.get(`${this.apiUrl}api/user/${id}`);
   }
 
 }

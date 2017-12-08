@@ -69,11 +69,9 @@ export class RegistrationComponent extends MessageDialog implements OnInit, OnDe
     const userData = {
       userEmail: email,
       password: password,
-      userData: {
-        userFirstName: name,
-        userLastName: surname,
-        userSchoolGroup: className
-      }
+      userFirstName: name,
+      userLastName: surname,
+      userSchoolGroup: className
     };
 
     this.usersService.createUser(userData).subscribe(res => {
