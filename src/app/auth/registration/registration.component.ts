@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { MatDialog } from '@angular/material';
-import { Router } from '@angular/router';
 
 import { handleFormErrors } from '../../shared/utils/handleFormErrors';
 import { appConfig } from '../../shared/app-config';
@@ -19,8 +18,7 @@ export class RegistrationComponent extends MessageDialog implements OnInit, OnDe
 
   constructor(private usersService: UsersService,
               private classesService: ClassesService,
-              private dialog: MatDialog,
-              private router: Router) {
+              private dialog: MatDialog) {
     super(dialog);
   }
 
@@ -60,6 +58,8 @@ export class RegistrationComponent extends MessageDialog implements OnInit, OnDe
 
     this.formSubscr = this.form.valueChanges.subscribe(data => {
       handleFormErrors(this.form, this.formErrors, this.validationMessages);
+    }, err => {
+      console.error(err);
     });
   }
 
@@ -77,7 +77,6 @@ export class RegistrationComponent extends MessageDialog implements OnInit, OnDe
     };
 
     this.usersService.createUser(userData).subscribe(res => {
-      console.log(res);
       if (res.status === 'SUCCES') {
         const messageData = {
           type: 'success',
@@ -87,8 +86,9 @@ export class RegistrationComponent extends MessageDialog implements OnInit, OnDe
           description: res.message
         };
         this.showModal(messageData);
-        // this.router.navigate(['login']);
       }
+    }, err => {
+      console.error(err);
     });
   }
 

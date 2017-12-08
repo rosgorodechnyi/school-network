@@ -1,19 +1,26 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import { appConfig } from '../../shared/app-config';
 import { handleFormErrors } from '../../shared/utils/handleFormErrors';
-import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../shared/services/auth.service';
+import { MessageDialog } from '../../shared/components/message-dialog/message-dialog';
 
 @Component({
   selector: 'sn-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent extends MessageDialog implements OnInit, OnDestroy {
 
-  constructor (private authService: AuthService) {}
+  constructor (private authService: AuthService,
+               private dialog: MatDialog,
+               private router: Router) {
+    super(dialog);
+  }
 
   form: FormGroup;
 
@@ -44,7 +51,20 @@ export class LoginComponent implements OnInit, OnDestroy {
     };
 
     this.authService.signIn(userData).subscribe((res) => {
-      console.log(res);
+      if (res.status === 'SUCCES') {
+        const { token, userId } = res.data;
+        this.authService.logIn(token, userId);
+
+        this.router.navigate(['profile']);
+      } else {
+        const messageData = {
+          type: 'error',
+          navigate: false,
+          title: 'Error!',
+          description: res.message
+        };
+        this.showModal(messageData);
+      }
     });
   }
 

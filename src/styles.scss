@@ -90,6 +90,40 @@ body, html{
       color: rgba(0,0,0,.87);
     }
   }
+  &__profile{
+    padding: 0 16px 0 0;
+    &__link{
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      text-decoration: none;
+      &:hover{
+        .header__profile__name{
+          color: rgba(255, 255, 255, .67);
+          transition: all .3s linear;
+        }
+      }
+    }
+    &__icon{
+      width: 30px;
+      height: 30px;
+      margin: 0 10px 0 0;
+      border-radius: 50%;
+      background: url(assets/img/user-placeholder.png) no-repeat 50% 50% / cover;
+      img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__name{
+      font-size: 16px;
+      color: #ffffff;
+      transition: all .3s linear;
+    }
+  }
 }
 
 .main{
@@ -205,8 +239,13 @@ body, html{
       bottom: 0;
       left: 0;
       width: 100%;
+      background: none;
+      border: none;
+      box-shadow: none;
       border-top: 1px solid rgba(0,0,0,.06);
+      text-align: left;
       z-index: 1;
+      cursor: pointer;
       i{
         transform: scaleX(-1);
       }

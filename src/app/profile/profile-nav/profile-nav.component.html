@@ -1,6 +1,14 @@
 <div class="profile__nav">
   <ul class="profile__nav__list">
     <li class="profile__nav__item">
+      <a [routerLink]="['/profile']"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact: true}"
+         class="profile__nav__link">
+        <i class="material-icons">dashboard</i>Dashboard
+      </a>
+    </li>
+    <li class="profile__nav__item">
       <a [routerLink]="['info']" routerLinkActive="active" class="profile__nav__link">
         <i class="material-icons">info</i>Profile info
       </a>
@@ -16,7 +24,7 @@
       </a>
     </li>
   </ul>
-  <a class="profile__nav__logout profile__nav__link">
+  <button class="profile__nav__logout profile__nav__link" (click)="logOut()">
     <i class="material-icons">exit_to_app</i>Log out
-  </a>
+  </button>
 </div>

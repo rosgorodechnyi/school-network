@@ -10,6 +10,12 @@ export class UsersService {
 
   apiUrl: string = appConfig.api;
 
+  getUserId() {
+    const localData = JSON.parse(window.localStorage.getItem('snUserData'));
+
+    return localData.userId;
+  }
+
   createUser(data): Observable<any> {
     return this.http.post(`${this.apiUrl}api/user/userRegistration`, data);
   }
