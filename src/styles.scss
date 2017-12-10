@@ -312,6 +312,7 @@ body, html{
         color: mat-color($accent);
         text-decoration: none;
         transition: all .4s linear;
+        cursor: pointer;
         &:hover, &.active{
           background-color: #fafafa;
           color: mat-color($primary);
@@ -350,11 +351,12 @@ body, html{
       &__name{
         margin: 0 0 10px;
         text-align: center;
-        a{
+        span{
           display: inline-block;
           font-size: 20px;
           color: rgba(0,0,0,.87);
           text-decoration: none;
+          cursor: pointer;
           &:hover{
             color: mat-color($accent);
           }
@@ -373,5 +375,66 @@ body, html{
         align-items: center;
       }
     }
+  }
+}
+
+.user-page{
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0 30px;
+  &__head{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  &__img{
+    flex: 0 1 200px;
+    .img-wrap{
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: url(assets/img/user-placeholder.png) no-repeat 50% 50% / cover;
+      img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  &__info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 0 1 100%;
+    padding: 0 0 0 40px;
+  }
+  &__text{
+    flex: 3 1 auto;
+  }
+  &__name{
+    margin: 0 0 10px;
+    font-size: 22px;
+  }
+  &__class{
+    font-size: 18px;
+    span{
+      color: rgba(0,0,0,.67);
+    }
+  }
+  &__actions{
+    flex: 1 1 auto;
+    text-align: right;
+  }
+  &__descr{
+    flex: 1 1 100%;
+    padding: 30px 0 0;
+    font-size: 16px;
+    color: rgba(0,0,0,.67);
   }
 }

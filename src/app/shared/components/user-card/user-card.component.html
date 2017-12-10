@@ -3,11 +3,11 @@
     <!--<img src="" alt="">-->
   </div>
   <div class="user-card__name">
-    <a href="">John Doe</a>
+    <span (click)="showProfile(user._id)">{{ user.userData.userFirstName }} {{ user.userData.userLastName }}</span>
   </div>
-  <div class="user-card__class">Some class</div>
+  <div class="user-card__class">{{ user.userData.userSchoolGroup.groupName }}</div>
   <div class="user-card__buttons">
     <a href="" mat-raised-button color="accent">Add to friends</a>
-    <a href="" mat-raised-button color="primary">Show profile</a>
+    <button mat-raised-button color="primary" (click)="showProfile(user._id)">Show profile</button>
   </div>
 </mat-card>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+import { ClassesService } from '../../shared/services/classes.service';
 
 @Component({
   selector: 'sn-users-filter',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersFilterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private classesService: ClassesService) { }
+
+  @Output() filterByClass: EventEmitter<any> = new EventEmitter();
+
+  classes: any[];
 
   ngOnInit() {
+    this.getClasses();
+  }
+
+  getClasses() {
+    this.classesService.getClasses().subscribe(classes => {
+      this.classes = classes;
+    });
+  }
+
+  filterHandler(id) {
+    this.filterByClass.emit(id);
   }
 
 }

@@ -1,8 +1,11 @@
 <div class="users__filter">
   <div class="users__filter__title">Filter by classes:</div>
-  <ul class="users__filter__list">
+  <ul class="users__filter__list" *ngIf="classes">
     <li class="list-item">
-      <a href="" class="list-link">Class 1</a>
+      <span class="list-link" (click)="filterHandler('')">Show all</span>
+    </li>
+    <li class="list-item" *ngFor="let class of classes">
+      <span class="list-link" (click)="filterHandler(class._id)">{{ class.groupName }}</span>
     </li>
   </ul>
 </div>

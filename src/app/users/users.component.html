@@ -1,6 +1,6 @@
 <div class="users">
-  <sn-users-filter></sn-users-filter>
-  <div class="users__catalog">
-    <sn-user-card></sn-user-card>
+  <sn-users-filter (filterByClass)="filterClasses($event)"></sn-users-filter>
+  <div class="users__catalog" *ngIf="users">
+    <sn-user-card *ngFor="let user of users" [user]="user"></sn-user-card>
   </div>
 </div>

@@ -10,10 +10,10 @@
         <a [routerLink]="['registration']" mat-raised-button>Sign up</a>
         <a [routerLink]="['login']" mat-raised-button>Sign in</a>
       </div>
-      <div class="header__profile" *ngIf="isLogedIn">
+      <div class="header__profile" *ngIf="isLogedIn && logedUser">
         <a [routerLink]="['profile']" class="header__profile__link">
           <span class="header__profile__icon"></span>
-          <span class="header__profile__name">asdas asdasd</span>
+          <span class="header__profile__name">{{ logedUser.userData.userFirstName }} {{ logedUser.userData.userLastName }}</span>
         </a>
       </div>
     </div>
