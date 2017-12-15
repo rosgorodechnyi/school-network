@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ProfileNavComponent } from './profile-nav/profile-nav.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { ProfileFriendsComponent } from './profile-friends/profile-friends.component';
+import { ProfileInfoImageComponent } from './profile-info/profile-info-image/profile-info-image.component';
+import { ProfileInfoDataComponent } from './profile-info/profile-info-data/profile-info-data.component';
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import { ProfileFriendsComponent } from './profile-friends/profile-friends.compo
     ProfileComponent,
     ProfileNavComponent,
     ProfileInfoComponent,
-    ProfileFriendsComponent
+    ProfileFriendsComponent,
+    ProfileInfoImageComponent,
+    ProfileInfoDataComponent
   ]
 })
 export class ProfileModule {}

@@ -1,0 +1,44 @@
+<mat-card class="profile__info__data">
+  <div class="data-preview" *ngIf="!editable">
+    <div class="data-email">{{ user.userEmail }}</div>
+    <div class="data-name">{{ user.userData.userFirstName }} {{ user.userData.userLastName }}</div>
+    <div class="data-class"><span>Class:</span> {{ user.userData.userSchoolGroup.groupName }}</div>
+    <button class="data-edit" mat-raised-button color="primary" (click)="enableEdit()">Edit data</button>
+  </div>
+  <div class="data-form" *ngIf="editable">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field color="accent">
+        <input matInput
+               type="text"
+               placeholder="Enter your name"
+               formControlName="name">
+        <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">
+          {{ formErrors['name'] }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field color="accent">
+        <input matInput
+               type="text"
+               placeholder="Enter your surname"
+               formControlName="surname">
+        <mat-error *ngIf="form.get('surname').invalid && form.get('surname').touched">
+          {{ formErrors['surname'] }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field color="accent" *ngIf="classes">
+        <mat-select placeholder="Choose your class" formControlName="className">
+          <mat-option *ngFor="let class of classes" [value]="class._id">
+            {{ class.groupName }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('className').invalid && form.get('className').touched">
+          {{ formErrors['className'] }}
+        </mat-error>
+      </mat-form-field>
+      <div class="data-form__button">
+        <button mat-raised-button color="accent" [disabled]="form.invalid">Save</button>
+        <button mat-button color="primary" type="button" (click)="disableEdit()">Close</button>
+      </div>
+    </form>
+  </div>
+</mat-card>

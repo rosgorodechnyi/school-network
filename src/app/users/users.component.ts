@@ -20,8 +20,10 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   getUsers() {
+    const authUserId = this.usersService.getUserId();
+
     this.usersSubs = this.usersService.getUsers().subscribe(users => {
-      this.users = users;
+      this.users = users.filter(user => user._id !== authUserId);
     });
   }
 

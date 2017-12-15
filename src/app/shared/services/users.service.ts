@@ -13,11 +13,7 @@ export class UsersService {
   getUserId() {
     const localData = JSON.parse(window.localStorage.getItem('snUserData'));
 
-    return localData[0].userId;
-  }
-
-  createUser(data): Observable<any> {
-    return this.http.post(`${this.apiUrl}api/user/userRegistration`, data);
+    return localData ? localData[0].userId : '';
   }
 
   getUsers(): Observable<any> {
@@ -26,6 +22,18 @@ export class UsersService {
 
   getUser(id): Observable<any> {
     return this.http.get(`${this.apiUrl}api/user/${id}`);
+  }
+
+  createUser(data): Observable<any> {
+    return this.http.post(`${this.apiUrl}api/user/userRegistration`, data);
+  }
+
+  updateUserData(data, id): Observable<any> {
+    return this.http.put(`${this.apiUrl}api/userData/${id}`, data);
+  }
+
+  updateUserImage(data, id): Observable<any> {
+    return this.http.post(`${this.apiUrl}api/user/userAvatar`, data);
   }
 
 }

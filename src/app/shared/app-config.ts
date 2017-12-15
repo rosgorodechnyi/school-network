@@ -1,5 +1,5 @@
 export const appConfig = {
-  api: 'https://schoololo.herokuapp.com/',
+  api: 'http://188.226.185.22/',
   validationMessages: {
     'email': {
       'required': 'You must enter email.',

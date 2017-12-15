@@ -2,12 +2,18 @@
   <div class="profile__title">
     <h1>Profile info</h1>
   </div>
-  <div class="profile__info">
-    <mat-card class="profile__info__card">
-      <div class="profile__info__img">
-
-      </div>
-      <div class="profile__info__content"></div>
-    </mat-card>
+  <div class="profile__info" *ngIf="user">
+    <sn-profile-info-image
+      [userImage]="user.avatar"
+      (updateImage)="onUpdateImage($event)"
+      [editable]="userImageEditable"
+      (switchEditable)="onImageEditable($event)"
+    ></sn-profile-info-image>
+    <sn-profile-info-data
+      [user]="user"
+      (updateData)="onUpdateData($event)"
+      [editable]="userDataEditable"
+      (switchEditable)="onUserEditable($event)"
+    ></sn-profile-info-data>
   </div>
 </div>

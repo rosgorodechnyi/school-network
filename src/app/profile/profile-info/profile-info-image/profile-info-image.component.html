@@ -1,0 +1,26 @@
+<mat-card class="profile__info__img">
+  <div class="image-preview" *ngIf="!editable">
+    <div class="image-wrap">
+      <img src="http://188.226.185.22/{{ userImage.src }}" alt="" *ngIf="userImage">
+    </div>
+    <div class="image-enable-edit">
+      <button mat-raised-button color="primary" (click)="showEdit()">Edit image</button>
+    </div>
+  </div>
+  <div class="image-form" *ngIf="editable">
+    <div class="image-form__input">
+      <label class="add-file">
+            <span class="add-file__button">
+              <i class="material-icons">attach_file</i>
+              <span>Add your photo</span>
+            </span>
+        <input type="file" (change)="changeFile($event)" accept=".png, .jpg, .jpeg">
+        <span class="add-file__name"></span>
+      </label>
+    </div>
+    <div class="image-form__button">
+      <button mat-raised-button color="accent" (click)="onUpdateImage()">Save</button>
+      <button mat-button color="primary" type="button" (click)="closeEdit()">Close</button>
+    </div>
+  </div>
+</mat-card>
