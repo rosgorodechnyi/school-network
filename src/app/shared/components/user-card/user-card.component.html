@@ -1,13 +1,34 @@
 <mat-card class="user-card">
-  <div class="user-card__img">
-    <!--<img src="" alt="">-->
+  <div class="user-card__img" [ngClass]="{'has-image': user.avatar}">
+    <img *ngIf="user.avatar" src="{{ user.avatar.src | snImage }}" alt="">
   </div>
   <div class="user-card__name">
     <span (click)="showProfile(user._id)">{{ user.userData.userFirstName }} {{ user.userData.userLastName }}</span>
   </div>
   <div class="user-card__class">{{ user.userData.userSchoolGroup.groupName }}</div>
-  <div class="user-card__buttons">
-    <a href="" mat-raised-button color="accent">Add to friends</a>
+  <div class="user-card__buttons" *ngIf="isLogedIn">
+    <button *ngIf="!addedToFriendsRequests && !hasRequestToFriends && !addedToFriends"
+            mat-raised-button
+            color="accent"
+            (click)="addtoFriend(user._id)"
+    >
+      Add to friends
+    </button>
+    <button *ngIf="hasRequestToFriends && !addedToFriends"
+            mat-raised-button
+            color="warn"
+            (click)="confirmFriendrequest(user._id)"
+    >
+      Accept
+    </button>
     <button mat-raised-button color="primary" (click)="showProfile(user._id)">Show profile</button>
+  </div>
+  <div class="user-card__buttons" *ngIf="!isLogedIn">
+    <button mat-raised-button color="primary" (click)="showProfile(user._id)">Show profile</button>
+  </div>
+  <div class="user-card__message">
+    <div class="request-seneded" *ngIf="addedToFriendsRequests">You send request</div>
+    <div class="have-request" *ngIf="hasRequestToFriends">Have request to friends</div>
+    <div class="your-friend" *ngIf="addedToFriends">Your friend</div>
   </div>
 </mat-card>

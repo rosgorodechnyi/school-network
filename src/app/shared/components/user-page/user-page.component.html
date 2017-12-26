@@ -3,8 +3,8 @@
     <div class="user-page__wrapper">
       <div class="user-page__head">
         <div class="user-page__img">
-          <div class="img-wrap">
-            <img src="" alt="">
+          <div class="img-wrap" [ngClass]="{'has-image': user.avatar}">
+            <img src="{{ user.avatar.src | snImage }}" alt="" *ngIf="user.avatar">
           </div>
         </div>
         <div class="user-page__info">
@@ -13,7 +13,7 @@
             <div class="user-page__class"><span>Class:</span> {{ user.userData.userSchoolGroup.groupName }}</div>
           </div>
           <div class="user-page__actions">
-            <button mat-raised-button color="accent">Add to friends</button>
+            <!--<button mat-raised-button color="accent">Add to friends</button>-->
           </div>
           <div class="user-page__descr">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aspernatur atque, aut debitis deleniti deserunt dolorem eaque est ipsam laudantium, pariatur repudiandae rerum, sunt temporibus voluptas voluptate voluptatum. Accusamus deleniti esse est fuga illum laboriosam minima nihil obcaecati officia, perspiciatis praesentium quae quo, quod repellat tenetur veritatis voluptas, voluptate voluptates.</p>

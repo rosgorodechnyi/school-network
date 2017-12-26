@@ -13,6 +13,8 @@ import { ProfileModule } from './profile/profile.module';
 import { ClassesService } from './shared/services/classes.service';
 import { UsersService } from './shared/services/users.service';
 import { TokenInterceptorService } from './shared/services/token-interceptor.service';
+import { AuthGuard } from './shared/services/auth.guard';
+import { FriendsService } from './shared/services/friends.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { TokenInterceptorService } from './shared/services/token-interceptor.ser
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    AuthGuard,
+    FriendsService
   ],
   bootstrap: [AppComponent]
 })

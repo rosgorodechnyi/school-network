@@ -84,9 +84,17 @@ export class RegistrationComponent extends MessageDialog implements OnInit, OnDe
           description: res.message
         };
         this.showModal(messageData);
+      } else {
+        console.log('asdasdasd');
       }
     }, err => {
-      console.error(err);
+      const messageData = {
+        type: 'error',
+        navigate: false,
+        title: 'Error!',
+        description: 'This user is registered'
+      };
+      this.showModal(messageData);
     });
   }
 

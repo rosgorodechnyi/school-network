@@ -20,11 +20,13 @@ export class AuthService {
     const data = JSON.stringify([{token, userId}]);
     window.localStorage.setItem('snUserData', data);
     this.logedStream.next(true);
+    this.logedIn = true;
   }
 
   logOut() {
     window.localStorage.removeItem('snUserData');
     this.logedStream.next(false);
+    this.logedIn = false;
   }
 
   isLogedIn(): boolean {

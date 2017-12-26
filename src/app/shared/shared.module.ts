@@ -7,6 +7,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MessageDialogComponent } from './components/message-dialog/message-dialog.component';
+import { ImagePipe } from './pipes/image.pipe';
 
 @NgModule({
   imports: [
@@ -21,7 +22,10 @@ import { MessageDialogComponent } from './components/message-dialog/message-dial
     MatSelectModule,
     MatDialogModule
   ],
-  declarations: [MessageDialogComponent],
+  declarations: [
+    MessageDialogComponent,
+    ImagePipe
+  ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
@@ -31,7 +35,8 @@ import { MessageDialogComponent } from './components/message-dialog/message-dial
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    ImagePipe
   ],
   entryComponents: [MessageDialogComponent]
 })

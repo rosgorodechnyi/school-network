@@ -1,7 +1,7 @@
 <mat-card class="profile__info__img">
   <div class="image-preview" *ngIf="!editable">
-    <div class="image-wrap">
-      <img src="http://188.226.185.22/{{ userImage.src }}" alt="" *ngIf="userImage">
+    <div class="image-wrap" [ngClass]="{'has-image': userImage}">
+      <img src="{{ userImage.src | snImage }}" alt="" *ngIf="userImage">
     </div>
     <div class="image-enable-edit">
       <button mat-raised-button color="primary" (click)="showEdit()">Edit image</button>

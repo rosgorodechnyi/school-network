@@ -12,7 +12,9 @@
       </div>
       <div class="header__profile" *ngIf="isLogedIn && logedUser">
         <a [routerLink]="['profile']" class="header__profile__link">
-          <span class="header__profile__icon"></span>
+          <span class="header__profile__icon" [ngClass]="{'has-image': logedUser.avatar}">
+            <img src="{{ logedUser.avatar.src | snImage }}" alt="" *ngIf="logedUser.avatar">
+          </span>
           <span class="header__profile__name">{{ logedUser.userData.userFirstName }} {{ logedUser.userData.userLastName }}</span>
         </a>
       </div>
